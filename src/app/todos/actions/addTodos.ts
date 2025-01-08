@@ -7,11 +7,9 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 export default async function addTodo(formData: FormData) {
-  // const cookieStore = cookies();
-  // const supabase = createClient(cookieStore);
 
-  const cookieStore = Promise.resolve(cookies()); 
-  const supabase = await createClient(cookieStore);
+  // const cookieStore = Promise.resolve(cookies()); 
+  const supabase = await createClient();
 
   const todoData = {
     title: formData.get("title")?.toString() || "",

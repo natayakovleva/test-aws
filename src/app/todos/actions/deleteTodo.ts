@@ -6,8 +6,8 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 export default async function deleteTodo(formData: FormData) {
-  const cookieStore = await cookies()
-  const supabase = createClient(cookieStore)
+  // const cookieStore = Promise.resolve(cookies()); 
+  const supabase = await createClient();
 
 
   const todoId = formData.get("id")?.toString();
