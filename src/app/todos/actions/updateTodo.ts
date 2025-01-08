@@ -7,8 +7,12 @@ import { redirect } from "next/navigation";
 import { Priority } from "@/constants/todos";
 
 export default async function updateTodo(formData: FormData) {
-  const cookieStore = await cookies();
-  const supabase = createClient(cookieStore);
+  // const cookieStore = await cookies();
+  // const supabase = createClient(cookieStore);
+  
+  const cookieStore = Promise.resolve(cookies());
+  const supabase = await createClient(cookieStore);
+
 
   const todoId = formData.get("id")?.toString();
 

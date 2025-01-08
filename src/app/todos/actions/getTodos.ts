@@ -8,8 +8,11 @@ import { Priority, SortBy, Status } from "@/constants/todos";
 export async function getTodos(
   searchParams: SearchParams
 ): Promise<{ data: Todo[] }> {
-  const cookieStore = await cookies();
-  const supabase = createClient(cookieStore);
+  // const cookieStore = await cookies();
+  // const supabase = createClient(cookieStore);
+
+  const cookieStore = Promise.resolve(cookies()); 
+const supabase = await createClient(cookieStore);
 
   let query = supabase
     .from("todos")
